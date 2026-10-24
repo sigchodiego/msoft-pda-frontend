@@ -50,6 +50,7 @@ export class EmpleadoComponent implements OnInit {
 
   onLogout(): void {
     this.authService.logout();
+    this.empleadoService.clearEmpleados();
     this.router.navigate(['/login']);
   }
 }

@@ -69,6 +69,11 @@ export class EmpleadoService {
     });
   }
 
+  clearEmpleados(): void {
+    this.empleadosSubject.next([]);
+    this.resetSelected();
+  }
+
   resetSelected(): void {
     this.selectedEmpleado = {
       nombre: '',
