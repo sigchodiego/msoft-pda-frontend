@@ -1,0 +1,54 @@
+<div class="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+  <div class="flex items-center justify-between border-b border-slate-200 px-5 py-4">
+    <div>
+      <h2 class="text-lg font-semibold text-slate-900">Listado</h2>
+      <p class="text-sm text-slate-500">{{ empleados.length }} registros</p>
+    </div>
+  </div>
+
+  <div class="overflow-x-auto" *ngIf="empleados.length; else empty">
+    <table class="min-w-full text-left text-sm">
+      <thead class="bg-slate-50 text-xs uppercase tracking-wide text-slate-500">
+        <tr>
+          <th class="px-5 py-3 font-medium">Nombre</th>
+          <th class="px-5 py-3 font-medium">Cargo</th>
+          <th class="px-5 py-3 font-medium">Departamento</th>
+          <th class="px-5 py-3 text-right font-medium">Sueldo</th>
+          <th class="px-5 py-3 font-medium">Operaciones</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-slate-100">
+        <tr *ngFor="let empleado of empleados" class="hover:bg-slate-50">
+          <td class="whitespace-nowrap px-5 py-3 font-medium text-slate-900">{{ empleado.nombre }}</td>
+          <td class="whitespace-nowrap px-5 py-3 text-slate-600">{{ empleado.cargo }}</td>
+          <td class="whitespace-nowrap px-5 py-3 text-slate-600">{{ empleado.departamento }}</td>
+          <td class="whitespace-nowrap px-5 py-3 text-right tabular-nums text-slate-900">
+            {{ empleado.sueldo | number:'1.2-2' }}
+          </td>
+          <td class="whitespace-nowrap px-5 py-3">
+            <div class="flex flex-wrap gap-2">
+              <button
+                type="button"
+                class="rounded-lg border border-slate-300 px-3 py-1.5 text-xs font-medium text-slate-700 transition hover:bg-white"
+                (click)="onEdit(empleado)"
+              >
+                Actualizar
+              </button>
+              <button
+                type="button"
+                class="rounded-lg bg-red-600 px-3 py-1.5 text-xs font-medium text-white transition hover:bg-red-700"
+                (click)="onRemove(empleado._id)"
+              >
+                Eliminar
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #empty>
+    <p class="px-5 py-12 text-center text-sm text-slate-500">No hay empleados registrados.</p>
+  </ng-template>
+</div>

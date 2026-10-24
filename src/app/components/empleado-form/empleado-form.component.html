@@ -1,0 +1,74 @@
+<div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+  <h2 class="text-lg font-semibold text-slate-900">
+    {{ empleado._id ? 'Editar empleado' : 'Nuevo empleado' }}
+  </h2>
+  <p class="mt-1 text-sm text-slate-500">
+    {{ empleado._id ? 'Actualiza los datos y guarda los cambios.' : 'Completa los datos para registrar un empleado.' }}
+  </p>
+
+  <form class="mt-5 space-y-4" #empleadoForm="ngForm" (ngSubmit)="onSubmit(empleadoForm)">
+    <div>
+      <label class="mb-1.5 block text-sm font-medium text-slate-700" for="nombre">Nombre</label>
+      <input
+        id="nombre"
+        type="text"
+        class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-200"
+        name="nombre"
+        placeholder="Nombre completo"
+        [(ngModel)]="empleado.nombre"
+        required
+      />
+    </div>
+    <div>
+      <label class="mb-1.5 block text-sm font-medium text-slate-700" for="cargo">Cargo</label>
+      <input
+        id="cargo"
+        type="text"
+        name="cargo"
+        class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-200"
+        placeholder="Cargo"
+        [(ngModel)]="empleado.cargo"
+        required
+      />
+    </div>
+    <div>
+      <label class="mb-1.5 block text-sm font-medium text-slate-700" for="departamento">Departamento</label>
+      <input
+        id="departamento"
+        type="text"
+        name="departamento"
+        class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-200"
+        placeholder="Departamento"
+        [(ngModel)]="empleado.departamento"
+        required
+      />
+    </div>
+    <div>
+      <label class="mb-1.5 block text-sm font-medium text-slate-700" for="sueldo">Sueldo</label>
+      <input
+        id="sueldo"
+        type="number"
+        name="sueldo"
+        class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-200"
+        placeholder="0"
+        [(ngModel)]="empleado.sueldo"
+        required
+      />
+    </div>
+    <div class="flex flex-col gap-3 pt-1 sm:flex-row">
+      <button
+        type="submit"
+        class="flex-1 rounded-lg bg-slate-900 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-slate-800"
+      >
+        {{ empleado._id ? 'Actualizar' : 'Crear' }}
+      </button>
+      <button
+        type="button"
+        class="flex-1 rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-slate-50"
+        (click)="onClear(empleadoForm)"
+      >
+        Limpiar
+      </button>
+    </div>
+  </form>
+</div>
