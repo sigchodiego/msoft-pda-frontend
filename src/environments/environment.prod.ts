@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://azurewebsites.net' // URL simulada del backend
+  apiUrl: 'http://3.129.17.140:3001' // URL simulada del backend
 };
