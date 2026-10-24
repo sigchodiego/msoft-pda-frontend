@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Empleado } from '../models/empleado';
+import { environment } from '../../environments/environment';
 
 interface ApiResponse<T> {
   success: boolean;
@@ -11,7 +12,7 @@ interface ApiResponse<T> {
 
 @Injectable({ providedIn: 'root' })
 export class EmpleadoService {
-  private readonly URL_API = 'http://localhost:3001/api/empleados';
+  private readonly URL_API = `${environment.apiUrl}/api/empleados`;
 
   private readonly empleadosSubject = new BehaviorSubject<Empleado[]>([]);
   /** Flujo de solo lectura para la vista */
