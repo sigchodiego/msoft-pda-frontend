@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join, resolve } from 'node:path';
 import AppServerModule from './src/main.server';
 
-const apiTarget = new URL(process.env['API_PROXY_TARGET'] || 'http://3.129.17.140:3001');
+const apiTarget = new URL(process.env['API_PROXY_TARGET'] || 'http://18.224.142.100:3001');
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
